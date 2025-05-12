@@ -14,7 +14,7 @@ body {
   border-radius: 10px;
 }
 
-input, select, textarea, button {
+input, textarea, button {
   width: 100%;
   margin: 10px 0;
   padding: 10px;
@@ -23,8 +23,16 @@ input, select, textarea, button {
   box-sizing: border-box;
 }
 
-select[multiple] {
-  height: 120px;
+fieldset {
+  border: 1px solid #444;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+fieldset label {
+  display: block;
+  margin-bottom: 5px;
 }
 
 textarea {
