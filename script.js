@@ -4,7 +4,6 @@ const output = document.getElementById("outputCode");
 const list = document.getElementById("movieList");
 
 function render() {
-  // Generate code
   let code = "const movies = [\n";
   movies.forEach((m, i) => {
     code += "  {\n";
@@ -19,7 +18,6 @@ function render() {
   code += "];";
   output.value = code;
 
-  // Movie management
   list.innerHTML = "";
   movies.forEach((m, index) => {
     const div = document.createElement("div");
@@ -40,7 +38,8 @@ form.addEventListener("submit", (e) => {
   const title = form.title.value.trim();
   const image = form.image.value.trim();
   const link = form.link.value.trim();
-  const categories = form.categories.value.trim().split(",").map(c => c.trim());
+  const selectedOptions = Array.from(form.categories.selectedOptions);
+  const categories = selectedOptions.map(opt => opt.value);
   const comingSoon = form.comingSoon.checked;
 
   movies.push({ title, image, link, categories, ...(comingSoon && { comingSoon }) });
@@ -61,5 +60,4 @@ function releaseMovie(index) {
   }
 }
 
-// Initial render
 render();
