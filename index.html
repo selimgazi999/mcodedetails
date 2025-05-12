@@ -7,6 +7,13 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <script>
+  const password = prompt("Enter password to access this tool:");
+  if (password !== "mySecret123") {
+    document.write("Unauthorized Access");
+    throw new Error("Access denied");
+  }
+</script>
   <div class="container">
     <h1>Movie Generator Tool</h1>
 
