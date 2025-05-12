@@ -3,36 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Channel.js Code Generator</title>
-  <link rel="stylesheet" href="style.css"/>
+  <title>Movie Code Generator</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Movie Data Generator (channel.js)</h1>
+    <h1>Movie Code Generator</h1>
     <form id="movieForm">
       <input type="text" id="title" placeholder="Movie Title" required />
       <input type="text" id="image" placeholder="Image URL" required />
-      <input type="text" id="link" placeholder="Movie Page Link" required />
+      <input type="text" id="link" placeholder="Movie Link" required />
 
-      <label>Categories:</label>
-      <div class="checkbox-group">
-        <label><input type="checkbox" value="latestMovies"> Latest</label>
-        <label><input type="checkbox" value="banglaMovies"> Bangla</label>
-        <label><input type="checkbox" value="hindiDubbedMovies"> Hindi Dubbed</label>
-        <label><input type="checkbox" value="hollywoodMovies"> Hollywood</label>
-        <label><input type="checkbox" value="banglaDubbedMovies"> Bangla Dubbed</label>
-        <label><input type="checkbox" value="tvwebseries"> TV/Web Series</label>
-        <label><input type="checkbox" value="animeMovie"> Anime</label>
-      </div>
+      <fieldset>
+        <legend>Select Categories</legend>
+        <label><input type="checkbox" value="latestMovies" /> Latest Movie</label>
+        <label><input type="checkbox" value="banglaMovies" /> Bangla Movie</label>
+        <label><input type="checkbox" value="hindiDubbedMovies" /> Hindi Dubbed</label>
+        <label><input type="checkbox" value="hollywoodMovies" /> Hollywood Movie</label>
+        <label><input type="checkbox" value="banglaDubbedMovies" /> Bangla Dubbed</label>
+        <label><input type="checkbox" value="tvwebseries" /> TV/Web Series</label>
+        <label><input type="checkbox" value="animeMovie" /> Anime</label>
+      </fieldset>
 
-      <label><input type="checkbox" id="comingSoon"/> Coming Soon</label>
+      <label><input type="checkbox" id="comingSoon" /> Coming Soon</label>
       <button type="submit">Generate Code</button>
     </form>
 
-    <h2>Generated Code:</h2>
-    <pre id="output"></pre>
+    <div class="output-container">
+      <h2>Generated Code</h2>
+      <pre id="output"></pre>
+      <button id="copyBtn">Copy Code</button>
+    </div>
   </div>
 
   <script src="script.js"></script>
 </body>
+</html></body>
 </html>
