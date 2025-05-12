@@ -12,15 +12,23 @@ body {
   background: #1a1a1a;
   padding: 20px;
   border-radius: 10px;
+  box-shadow: 0 0 15px #000;
 }
 
-input, textarea, button {
+input, textarea, button, select {
   width: 100%;
   margin: 10px 0;
   padding: 10px;
   border-radius: 5px;
   border: none;
   box-sizing: border-box;
+  background: #2a2a2a;
+  color: #fff;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #999;
 }
 
 fieldset {
@@ -30,15 +38,23 @@ fieldset {
   margin-bottom: 10px;
 }
 
+fieldset legend {
+  padding: 0 10px;
+  font-weight: bold;
+  color: #ccc;
+}
+
 fieldset label {
   display: block;
   margin-bottom: 5px;
+  font-size: 14px;
 }
 
 textarea {
   background: #000;
   color: #0f0;
   font-family: monospace;
+  resize: vertical;
 }
 
 button {
@@ -46,6 +62,7 @@ button {
   color: white;
   cursor: pointer;
   font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
@@ -54,7 +71,52 @@ button:hover {
 
 .movie-item {
   background: #2c2c2c;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px #000;
+}
+
+.movie-item strong {
+  font-size: 16px;
+}
+
+.movie-item em {
+  color: #ffa500;
+  font-style: italic;
+}
+
+.movie-item button {
+  width: auto;
+  margin: 5px 5px 0 0;
+  padding: 6px 12px;
+  font-size: 13px;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.movie-item button:nth-child(3) {
+  background-color: #2196f3;
+}
+
+.movie-item button:nth-child(3):hover {
+  background-color: #1976d2;
+}
+
+.movie-item button:nth-child(4) {
+  background-color: #f44336;
+}
+
+.movie-item button:nth-child(4):hover {
+  background-color: #d32f2f;
+}
+
+.movie-item button:nth-child(5),
+.movie-item button:nth-child(6) {
+  background-color: #555;
+}
+
+.movie-item button:nth-child(5):hover,
+.movie-item button:nth-child(6):hover {
+  background-color: #777;
 }
