@@ -26,6 +26,9 @@ function render() {
       <strong>${m.title}</strong><br/>
       ${m.comingSoon ? "<em>Coming Soon</em>" : "Released"}<br/>
       <button onclick="releaseMovie(${index})">Mark Released</button>
+      <button onclick="deleteMovie(${index})">Delete</button>
+      <button onclick="moveUp(${index})"${index === 0 ? " disabled" : ""}>↑</button>
+      <button onclick="moveDown(${index})"${index === movies.length - 1 ? " disabled" : ""}>↓</button>
     `;
     list.appendChild(div);
   });
@@ -56,6 +59,27 @@ function copyCode() {
 function releaseMovie(index) {
   if (movies[index].comingSoon) {
     delete movies[index].comingSoon;
+    render();
+  }
+}
+
+function deleteMovie(index) {
+  if (confirm("Are you sure you want to delete this movie?")) {
+    movies.splice(index, 1);
+    render();
+  }
+}
+
+function moveUp(index) {
+  if (index > 0) {
+    [movies[index - 1], movies[index]] = [movies[index], movies[index - 1]];
+    render();
+  }
+}
+
+function moveDown(index) {
+  if (index < movies.length - 1) {
+    [movies[index], movies[index + 1]] = [movies[index + 1], movies[index]];
     render();
   }
 }
