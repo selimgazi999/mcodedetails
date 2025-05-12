@@ -1,7 +1,8 @@
 const form = document.getElementById('movieForm');
 const output = document.getElementById('output');
+const copyBtn = document.getElementById('copyBtn');
 
-let movieArray = [];
+let movieArray = JSON.parse(localStorage.getItem('movies')) || [];
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -32,6 +33,7 @@ form.addEventListener('submit', function (e) {
   }
 
   movieArray.push(movieObj);
+  localStorage.setItem('movies', JSON.stringify(movieArray));
   form.reset();
   generateOutput();
 });
@@ -46,3 +48,14 @@ function generateOutput() {
   result += "];";
   output.textContent = result;
 }
+
+copyBtn.addEventListener('click', () => {
+  navigator.clipboard.writeText(output.textContent).then(() => {
+    copyBtn.textContent = 'Copied!';
+    setTimeout(() => {
+      copyBtn.textContent = 'Copy Code';
+    }, 1500);
+  });
+});
+
+generateOutput();
