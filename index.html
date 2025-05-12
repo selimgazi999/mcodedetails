@@ -15,16 +15,16 @@
       <input type="text" id="image" placeholder="Image URL" required />
       <input type="text" id="link" placeholder="Movie Link" required />
 
-      <label>Categories:</label>
-      <select id="categories" multiple>
-        <option value="latestMovies">Latest Movies</option>
-        <option value="banglaMovies">Bangla Movies</option>
-        <option value="hindiDubbedMovies">Hindi Dubbed</option>
-        <option value="hollywoodMovies">Hollywood Movies</option>
-        <option value="banglaDubbedMovies">Bangla Dubbed</option>
-        <option value="tvwebseries">TV/Web Series</option>
-        <option value="animeMovie">Anime Movie</option>
-      </select>
+      <fieldset>
+        <legend>Select Categories:</legend>
+        <label><input type="checkbox" name="category" value="latestMovies" /> Latest Movies</label>
+        <label><input type="checkbox" name="category" value="banglaMovies" /> Bangla Movies</label>
+        <label><input type="checkbox" name="category" value="hindiDubbedMovies" /> Hindi Dubbed</label>
+        <label><input type="checkbox" name="category" value="hollywoodMovies" /> Hollywood Movies</label>
+        <label><input type="checkbox" name="category" value="banglaDubbedMovies" /> Bangla Dubbed</label>
+        <label><input type="checkbox" name="category" value="tvwebseries" /> TV/Web Series</label>
+        <label><input type="checkbox" name="category" value="animeMovie" /> Anime Movie</label>
+      </fieldset>
 
       <label><input type="checkbox" id="comingSoon" /> Coming Soon</label>
       <button type="submit">Add Movie</button>
