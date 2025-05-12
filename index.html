@@ -7,13 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <script>
-  const password = prompt("Enter password to access this tool:");
-  if (password !== "mySecret123") {
-    document.write("Unauthorized Access");
-    throw new Error("Access denied");
-  }
-</script>
+  
   <div class="container">
     <h1>Movie Generator Tool</h1>
 
@@ -44,7 +38,17 @@
     <h2>Manage Movies</h2>
     <div id="movieList"></div>
   </div>
-
+ 
   <script src="script.js"></script>
+<script>
+  const password = prompt("Enter password to access this tool:");
+  if (password !== "mySecret123") {
+    document.body.innerHTML = "<h1 style='color:red;text-align:center;'>Access Denied</h1>";
+    // স্ক্রিপ্ট execution সম্পূর্ণ থামানো
+    window.stop(); // Most browsers
+    throw new Error("Stopped due to wrong password");
+  }
+</script>
+
 </body>
 </html>
