@@ -2,6 +2,7 @@ let movies = JSON.parse(localStorage.getItem("movies") || "[]");
 const form = document.getElementById("movieForm");
 const output = document.getElementById("outputCode");
 const list = document.getElementById("movieList");
+let editIndex = null;
 
 function render() {
   let code = "const movies = [\n";
@@ -25,6 +26,7 @@ function render() {
     div.innerHTML = `
       <strong>${m.title}</strong><br/>
       ${m.comingSoon ? "<em>Coming Soon</em>" : "Released"}<br/>
+      <button onclick="editMovie(${index})">Edit</button>
       <button onclick="releaseMovie(${index})">Mark Released</button>
       <button onclick="deleteMovie(${index})">Delete</button>
       <button onclick="moveUp(${index})"${index === 0 ? " disabled" : ""}>↑</button>
@@ -45,10 +47,31 @@ form.addEventListener("submit", (e) => {
   const categories = Array.from(checkboxes).map(cb => cb.value);
   const comingSoon = form.comingSoon.checked;
 
-  movies.push({ title, image, link, categories, ...(comingSoon && { comingSoon }) });
+  const movieData = { title, image, link, categories, ...(comingSoon && { comingSoon }) };
+
+  if (editIndex !== null) {
+    movies[editIndex] = movieData;
+    editIndex = null;
+  } else {
+    movies.push(movieData);
+  }
+
   form.reset();
   render();
 });
+
+function editMovie(index) {
+  const movie = movies[index];
+  form.title.value = movie.title;
+  form.image.value = movie.image;
+  form.link.value = movie.link;
+  document.querySelectorAll('input[name="category"]').forEach(cb => {
+    cb.checked = movie.categories.includes(cb.value);
+  });
+  form.comingSoon.checked = !!movie.comingSoon;
+  editIndex = index;
+  form.scrollIntoView({ behavior: 'smooth' });
+}
 
 function copyCode() {
   output.select();
