@@ -38,8 +38,8 @@ form.addEventListener("submit", (e) => {
   const title = form.title.value.trim();
   const image = form.image.value.trim();
   const link = form.link.value.trim();
-  const selectedOptions = Array.from(form.categories.selectedOptions);
-  const categories = selectedOptions.map(opt => opt.value);
+  const checkboxes = document.querySelectorAll('input[name="category"]:checked');
+  const categories = Array.from(checkboxes).map(cb => cb.value);
   const comingSoon = form.comingSoon.checked;
 
   movies.push({ title, image, link, categories, ...(comingSoon && { comingSoon }) });
