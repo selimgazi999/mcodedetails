@@ -4,18 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Movie Generator</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://mcoded.netlify.app/style.css" />
+  <style>
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background: #222;
+      color: #eee;
+      border-radius: 8px;
+    }
+    input, textarea, button {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .movie-item {
+      border: 1px solid #555;
+      padding: 10px;
+      margin-bottom: 5px;
+      background: #333;
+    }
+  </style>
 </head>
 <body>
   
   <div class="container">
-    <h1>Movie Generator Tool</h1>
-
+    <h1>🎬 Movie Generator Tool</h1>
     <form id="movieForm">
       <input type="text" id="title" placeholder="Movie Title" required />
       <input type="text" id="image" placeholder="Image URL" required />
       <input type="text" id="link" placeholder="Movie Link" required />
-
       <fieldset>
         <legend>Select Categories:</legend>
         <label><input type="checkbox" name="category" value="latestMovies" /> Latest Movies</label>
@@ -26,29 +45,31 @@
         <label><input type="checkbox" name="category" value="tvwebseries" /> TV/Web Series</label>
         <label><input type="checkbox" name="category" value="animeMovie" /> Anime Movie</label>
       </fieldset>
-
       <label><input type="checkbox" id="comingSoon" /> Coming Soon</label>
-      <button type="submit">Add Movie</button>
+      <button type="submit">Add / Update Movie</button>
     </form>
 
     <h2>Generated Code</h2>
-    <textarea id="outputCode" rows="20" readonly></textarea>
+    <textarea id="outputCode" rows="10" readonly></textarea>
     <button onclick="copyCode()">Copy All Code</button>
 
     <h2>Manage Movies</h2>
     <div id="movieList"></div>
-  </div>
- 
-  <script src="script.js"></script>
-<script>
-  const password = prompt("Enter password to access this tool:");
-  if (password !== "emon123") {
-    document.body.innerHTML = "<h1 style='color:red;text-align:center;'>Access Denied</h1>";
-    // স্ক্রিপ্ট execution সম্পূর্ণ থামানো
-    window.stop(); // Most browsers
-    throw new Error("Stopped due to wrong password");
-  }
-</script>
 
+    <h2>Backup & Import</h2>
+    <input type="file" id="backupFile" />
+    <button onclick="importBackup()">Import Backup</button>
+    <button onclick="downloadBackup()">Download Backup (JSON)</button>
+  </div>
+
+  <script src="https://mcoded.netlify.app/script.js"></script>
+  <script>
+    const password = prompt("Enter password to access this tool:");
+    if (password !== "emon123") {
+      document.body.innerHTML = "<h1 style='color:red;text-align:center;'>Access Denied</h1>";
+      window.stop();
+      throw new Error("Stopped due to wrong password");
+    }
+  </script>
 </body>
 </html>
