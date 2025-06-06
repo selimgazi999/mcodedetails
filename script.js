@@ -1,3 +1,5 @@
+// script.js
+
 let movies = JSON.parse(localStorage.getItem("movies") || "[]");
 const form = document.getElementById("movieForm");
 const output = document.getElementById("outputCode");
@@ -105,6 +107,48 @@ function moveDown(index) {
     [movies[index], movies[index + 1]] = [movies[index + 1], movies[index]];
     render();
   }
+}
+
+// Backup import
+function importBackup() {
+  const fileInput = document.getElementById("backupFile");
+  const file = fileInput.files[0];
+  if (!file) {
+    alert("Please select a backup file.");
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const newData = JSON.parse(e.target.result);
+      const oldData = JSON.parse(localStorage.getItem("movies") || "[]");
+      const mergedData = oldData.concat(newData);
+
+      localStorage.setItem("movies", JSON.stringify(mergedData));
+      movies = mergedData;
+      render();
+      alert("Backup imported and merged!");
+    } catch (err) {
+      alert("Invalid backup file!");
+    }
+  };
+  reader.readAsText(file);
+}
+
+// Backup download
+function downloadBackup() {
+  const dataStr = JSON.stringify(movies, null, 2);
+  const blob = new Blob([dataStr], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "movies-backup.json";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+
+  URL.revokeObjectURL(url);
 }
 
 render();
